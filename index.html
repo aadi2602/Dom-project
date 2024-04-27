@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Product cart</title>
+    <style>
+        body {
+            background-color: #f7f6f6;
+        }
+
+        .product-img {
+            width: 240px;
+            height: 200px;
+            display: flex;
+            margin: 10px auto;
+            padding: 5px;
+            border-radius: 20px;
+        }
+
+        .product-cart {
+            background-color: white;
+            width: 250px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px black;
+            display: block;
+            margin: 30px auto;
+        }
+
+        .cart-body {
+            text-align: justify;
+            padding: 5px;
+            margin: 10px auto;
+        }
+
+        .product-title {
+            font-size: 16px;
+        }
+
+        .product-description {
+            font-size: 12px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .btn-buy-now {
+            padding: 5px 20px;
+            border: none;
+            display: block;
+            margin: 10px auto;
+            border-radius: 20px;
+            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(97, 186, 255, 1) 0%, rgba(166, 239, 253, 1) 90.1%);
+        }
+
+        .btn-buy-now:hover {
+            background-color: #0093E9;
+            background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+        }
+
+        .quntity-btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .btn-quntity {
+            height: 25px;
+        }
+
+        .qunity-text {
+            font-size: 20px;
+            margin: auto 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-cart">
+        <img src="download.jpg" class="product-img" />
+        <div class="cart-body">
+            <h1 class="product-title">Women Black Print Casual Dress</h1>
+            <p class="product-description">
+                The regular fit compliments women of all shapes,
+                and the 3/4th sleeves lend a modest touch, perfect for any occasion.
+            </p>
+            <p class="product-price">₹ 1000/-</p>
+
+            <p id="show-quntity">1 * 349</p>
+            <p id="show-total">Total 349</p>
+
+            <div class="quntity-btn-container">
+                <img src="minus.png" class="btn-quntity" onclick="dec()" />
+                <span class="qunity-text" id="qunity-text">1</span>
+                <img src="plush.png" class="btn-quntity" onclick="inc()" />
+            </div>
+
+
+            <button class="btn-buy-now">
+                Buy Now
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function inc() {
+            const quentityText = document.getElementById('qunity-text');
+            const showQuntity = document.getElementById("show-quntity")
+            const showTotal = document.getElementById("show-total")
+            let quntity = parseInt(quentityText.innerText);
+
+
+            if (quntity < 10) {
+                quentityText.innerText = ++quntity;
+            }
+            else
+            {
+                alert("You can't add more than 10 items")
+            }
+            showQuntity.innerText = `${quntity} * 349`;
+            showTotal.innerText = `Total: ${quntity * 349}`
+        }
+        function dec() {
+            const quentityText = document.getElementById('qunity-text');
+            const showQuntity = document.getElementById("show-quntity")
+            const showTotal = document.getElementById("show-total")
+            let quntity = parseInt(quentityText.innerText);
+
+            if (quntity > 1) {
+                quentityText.innerText = --quntity;
+            }
+            else
+            {
+                alert("You can't less than 1 items")
+            }
+            showQuntity.innerText = `${quntity} * 349`;
+            showTotal.innerText = `Total: ${quntity * 349}`
+        }
+
+    </script>
+</body>
+
+</html>
